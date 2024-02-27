@@ -17,7 +17,6 @@ public class LEGConUltimo<E> extends LEG<E> implements I_ListaConUltimo<E>
         NodoLEG<E> nuevo = new NodoLEG<E>(elemento);
         this.ultimo.setSiguiente(nuevo);
         this.ultimo = nuevo;
-        size++;
     }
 
     public E getUltimo()

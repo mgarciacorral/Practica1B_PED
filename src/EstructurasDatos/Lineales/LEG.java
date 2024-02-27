@@ -3,12 +3,10 @@ package EstructurasDatos.Lineales;
 public class LEG<E>
 {
     protected NodoLEG<E> head;
-    protected int size;
 
     public LEG()
     {
         this.head = new NodoLEG<E>(null);
-        this.size = 0;
     }
 
     public void add(E elemento)
@@ -16,7 +14,6 @@ public class LEG<E>
         NodoLEG<E> nuevo = new NodoLEG<E>(elemento);
         nuevo.setSiguiente(head.getSiguiente());
         head.setSiguiente(nuevo);
-        size++;
     }
 
     public void append(E elemento)
@@ -28,17 +25,11 @@ public class LEG<E>
             actual = actual.getSiguiente();
         }
         actual.setSiguiente(nuevo);
-        size++;
-    }
-
-    public int getSize()
-    {
-        return size;
     }
 
     public E get(int index)
     {
-        if (index <= 0 || index >= size)
+        if (index <= 0)
         {
             return null;
         }
@@ -56,7 +47,7 @@ public class LEG<E>
 
     public void remove(int index)
     {
-        if (index < 0 || index > size)
+        if (index < 0)
         {
             return;
         }
@@ -70,7 +61,6 @@ public class LEG<E>
             actual = actual.getSiguiente();
         }
         actual.setSiguiente(actual.getSiguiente().getSiguiente());
-        size--;
     }
 
     public void toStringIterativo()
