@@ -1,16 +1,23 @@
+import EstructurasDatos.Lineales.LEG;
+import EstructurasDatos.Lineales.LEGConUltimo;
 import EstructurasDatos.Lineales.LEGConUltimoEC;
+
 public class Main {
-    public static void main(String[] args) {
-        // Press Alt+Intro with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+    public static void main(String[] args)
+    {
+        LEGConUltimoEC<Integer> lista = new LEGConUltimoEC<Integer>();
 
-        // Press Mayús+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Mayús+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        for(int i = 0; i < 10; i++)
+        {
+            lista.append(i);
         }
+
+        lista.toStringIterativo();
+        lista.remove(0);
+        lista.toStringInversoIterativo();
+        lista.moverCabeza();
+        lista.toStringRecursivo();
+        lista.toStringInversoRecursivo();
+        System.out.println("Elemento en la posicion 5: " + lista.get(5));
     }
 }
