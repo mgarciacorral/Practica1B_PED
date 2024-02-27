@@ -4,7 +4,7 @@ import EstructurasDatos.Modelos.I_ListaConUltimo;
 
 public class LEGConUltimo<E> extends LEG<E> implements I_ListaConUltimo<E>
 {
-    private NodoLEG<E> ultimo;
+    protected NodoLEG<E> ultimo;
 
     public LEGConUltimo()
     {
