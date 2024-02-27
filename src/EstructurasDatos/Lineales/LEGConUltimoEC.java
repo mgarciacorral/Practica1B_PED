@@ -8,11 +8,4 @@ public class LEGConUltimoEC<E extends Comparable<E>> extends LEGConUltimo<E> imp
     {
         super();
     }
-
-    public void moverCabeza()
-    {
-        E aux = this.get(0);
-        this.remove(0);
-        this.append(aux);
-    }
 }

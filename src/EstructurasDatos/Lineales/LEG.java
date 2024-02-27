@@ -29,7 +29,7 @@ public class LEG<E>
 
     public E get(int index)
     {
-        if (index <= 0)
+        if (index <= 0 )
         {
             return null;
         }
@@ -47,7 +47,7 @@ public class LEG<E>
 
     public void remove(int index)
     {
-        if (index < 0)
+        if (index < 0 )
         {
             return;
         }
@@ -60,7 +60,14 @@ public class LEG<E>
             }
             actual = actual.getSiguiente();
         }
-        actual.setSiguiente(actual.getSiguiente().getSiguiente());
+        if(actual.getSiguiente().getSiguiente() != null)
+        {
+            actual.setSiguiente(actual.getSiguiente().getSiguiente());
+        }
+        else
+        {
+            actual.setSiguiente(null);
+        }
     }
 
     public void toStringIterativo()
