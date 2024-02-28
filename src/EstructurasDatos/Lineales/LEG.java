@@ -72,6 +72,11 @@ public class LEG<E>
 
     public void toStringIterativo()
     {
+        if (head.getSiguiente() == null)
+        {
+            System.out.println("Lista vacia");
+            return;
+        }
         NodoLEG<E> actual = head.getSiguiente();
         while (actual != null)
         {
@@ -83,12 +88,22 @@ public class LEG<E>
 
     public void toStringRecursivo()
     {
+        if (head.getSiguiente() == null)
+        {
+            System.out.println("Lista vacia");
+            return;
+        }
         head.toStringRecursivo();
         System.out.println();
     }
 
     public void toStringInversoIterativo()
     {
+        if (head.getSiguiente() == null)
+        {
+            System.out.println("Lista vacia");
+            return;
+        }
         String resultado = "";
         NodoLEG<E> actual = head.getSiguiente();
         while (actual != null)
@@ -101,6 +116,11 @@ public class LEG<E>
 
     public void toStringInversoRecursivo()
     {
+        if (head.getSiguiente() == null)
+        {
+            System.out.println("Lista vacia");
+            return;
+        }
         System.out.println(head.toStringInversoRecursivo(""));
     }
 

@@ -11,6 +11,10 @@ public class LEGConUltimoEC<E extends Number> extends LEGConUltimo<E> implements
 
     public void moverCabeza()
     {
+        if (head.getSiguiente() == null)
+        {
+            return;
+        }
         E aux = this.head.getSiguiente().getElemento();
         this.remove(0);
         this.append(aux);
@@ -18,6 +22,10 @@ public class LEGConUltimoEC<E extends Number> extends LEGConUltimo<E> implements
 
     public void borrarMinimo()
     {
+        if (head.getSiguiente() == null)
+        {
+            return;
+        }
         NodoLEG<E> actual = this.head.getSiguiente();
         NodoLEG<E> anterior = this.head;
         NodoLEG<E> minimo = actual;
@@ -44,6 +52,10 @@ public class LEGConUltimoEC<E extends Number> extends LEGConUltimo<E> implements
 
     public void insertarCentinelas()
     {
+        if (head.getSiguiente() == null)
+        {
+            return;
+        }
         if((int)ultimo.getElemento()%2 == 0)
         {
             NodoLEG<E> actual = this.head.getSiguiente();
