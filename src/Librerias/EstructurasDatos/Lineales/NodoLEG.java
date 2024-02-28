@@ -1,4 +1,4 @@
-package EstructurasDatos.Lineales;
+package Librerias.EstructurasDatos.Lineales;
 
 public class NodoLEG<E>
 {

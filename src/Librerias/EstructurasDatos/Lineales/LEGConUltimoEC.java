@@ -1,6 +1,7 @@
-package EstructurasDatos.Lineales;
+package Librerias.EstructurasDatos.Lineales;
 
-import EstructurasDatos.Modelos.I_ListaConUltimoEC;
+import Librerias.EstructurasDatos.Modelos.I_ListaConUltimoEC;
+import Librerias.ExcepcionesDeUsuario.FalloEnOperacion;
 
 public class LEGConUltimoEC<E extends Number> extends LEGConUltimo<E> implements I_ListaConUltimoEC<E>
 {
@@ -9,12 +10,20 @@ public class LEGConUltimoEC<E extends Number> extends LEGConUltimo<E> implements
         super();
     }
 
-    public void moverCabeza()
+    public void moverCabeza() throws FalloEnOperacion
     {
-        if (head.getSiguiente() == null)
+        try
         {
+            if (head.getSiguiente() == null || (int)head.getSiguiente().getElemento() < (int)ultimo.getElemento())
+            {
+                throw new FalloEnOperacion("Imposible realizar esa operacion.");
+            }
+        }catch(Exception e)
+        {
+            System.out.println("Imposible realizar esa operacion.");
             return;
         }
+
         E aux = this.head.getSiguiente().getElemento();
         this.remove(0);
         this.append(aux);

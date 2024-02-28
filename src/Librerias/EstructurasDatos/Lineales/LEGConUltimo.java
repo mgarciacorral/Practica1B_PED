@@ -1,6 +1,6 @@
-package EstructurasDatos.Lineales;
+package Librerias.EstructurasDatos.Lineales;
 
-import EstructurasDatos.Modelos.I_ListaConUltimo;
+import Librerias.EstructurasDatos.Modelos.I_ListaConUltimo;
 
 public class LEGConUltimo<E> extends LEG<E> implements I_ListaConUltimo<E>
 {

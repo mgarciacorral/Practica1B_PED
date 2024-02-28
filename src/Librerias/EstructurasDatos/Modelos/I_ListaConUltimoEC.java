@@ -1,6 +1,6 @@
-package EstructurasDatos.Modelos;
+package Librerias.EstructurasDatos.Modelos;
 
-public interface I_ListaConUltimo<E>
+public interface I_ListaConUltimoEC<E>
 {
     public void append(E elemento);
     public E get(int index);

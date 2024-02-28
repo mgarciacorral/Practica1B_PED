@@ -1,17 +1,17 @@
-import EstructurasDatos.Lineales.*;
+import Librerias.EstructurasDatos.Lineales.*;
+import Librerias.ExcepcionesDeUsuario.FalloEnOperacion;
+
 import java.util.Scanner;
 
 public class Menu
 {
     LEGConUltimoEC<Integer> lista;
-    public Menu()
-    {
+    public Menu() throws FalloEnOperacion {
         this.lista = new LEGConUltimoEC<Integer>();
         ejecutar();
     }
 
-    public void ejecutar()
-    {
+    public void ejecutar() throws FalloEnOperacion {
         Scanner sc = new Scanner(System.in);
         int opcion = -1;
         while (opcion != 0)
@@ -96,8 +96,7 @@ public class Menu
         pulseIntro();
     }
 
-    private void moverCabeza()
-    {
+    private void moverCabeza() throws FalloEnOperacion {
         System.out.println("\t\tMOVER CABEZA A LA COLA\n");
         System.out.println("La cabeza ha sido movida a la cola");
         System.out.print("Originalmente la lista era: ");
