@@ -2,7 +2,7 @@ package EstructurasDatos.Lineales;
 
 import EstructurasDatos.Modelos.I_ListaConUltimoEC;
 
-public class LEGConUltimoEC<E extends Comparable<E>> extends LEGConUltimo<E> implements I_ListaConUltimoEC<E>
+public class LEGConUltimoEC<E extends Number> extends LEGConUltimo<E> implements I_ListaConUltimoEC<E>
 {
     public LEGConUltimoEC()
     {
@@ -24,7 +24,7 @@ public class LEGConUltimoEC<E extends Comparable<E>> extends LEGConUltimo<E> imp
         NodoLEG<E> anteriorMinimo = anterior;
         while (actual != null)
         {
-            if (actual.getElemento().compareTo(minimo.getElemento()) < 0)
+            if ((int)actual.getElemento() < (int)minimo.getElemento())
             {
                 minimo = actual;
                 anteriorMinimo = anterior;
@@ -50,19 +50,17 @@ public class LEGConUltimoEC<E extends Comparable<E>> extends LEGConUltimo<E> imp
 
             while(actual != null)
             {
-                if(actual.getElemento()%2 == 0)
+                if((int)actual.getElemento()%2 == 0)
                 {
-                    try
-                    {
-                        NodoLEG<Integer> centinela = new NodoLEG<Integer>(-12);
-                        centinela.setSiguiente((NodoLEG<Integer>)actual.getSiguiente());
-                        actual.setSiguiente((NodoLEG<E>)centinela);
-                    }catch(Exception e)
-                    {
-                        System.out.println("Este metodo solo funciona en listas de enteros");
-                    }
+                    NodoLEG<E> aux = actual.getSiguiente();
+                    actual.setSiguiente(new NodoLEG<E>((E) new Integer(-12)));
+                    actual.getSiguiente().setSiguiente(aux);
+                    actual = actual.getSiguiente().getSiguiente();
                 }
-                actual = actual.getSiguiente();
+                else
+                {
+                    actual = actual.getSiguiente();
+                }
             }
         }
     }

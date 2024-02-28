@@ -16,11 +16,11 @@ public class Main {
         lista.moverCabeza();
         lista.moverCabeza();
         lista.moverCabeza();
+        lista.borrarMinimo();
         lista.toStringIterativo();
         lista.insertarCentinelas();
         lista.toStringIterativo();
         lista.borrarMinimo();
         lista.toStringIterativo();
-        System.out.println("Elemento en la posicion 5: " + lista.get(5));
     }
 }
