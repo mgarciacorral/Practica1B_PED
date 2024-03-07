@@ -59,7 +59,7 @@ public class LEGConUltimoEC<E extends Number> extends LEGConUltimo<E> implements
         }
     }
 
-    public void insertarCentinelas()
+    public void insertarCentinelasConUltimo()
     {
         if (head.getSiguiente() == null)
         {
@@ -69,7 +69,7 @@ public class LEGConUltimoEC<E extends Number> extends LEGConUltimo<E> implements
         {
             NodoLEG<E> actual = this.head.getSiguiente();
 
-            while(actual != null)
+            while(actual.getSiguiente() != null)
             {
                 if((int)actual.getElemento()%2 == 0)
                 {
@@ -82,7 +82,42 @@ public class LEGConUltimoEC<E extends Number> extends LEGConUltimo<E> implements
                 {
                     actual = actual.getSiguiente();
                 }
+
             }
+            if((int)actual.getElemento()%2 == 0)
+            {
+                append((E) new Integer(-12));
+            }
+
+        }
+    }
+
+    public void insertarCentinelasSinUltimo()
+    {
+        if (head.getSiguiente() == null)
+        {
+            return;
+        }
+
+        LEGConUltimoEC<E> aux = new LEGConUltimoEC<E>();
+        NodoLEG<E> actual = this.head.getSiguiente();
+
+        while(actual.getSiguiente() != null)
+        {
+            aux.append(actual.getElemento());
+            if((int)actual.getElemento()%2 == 0)
+            {
+                aux.append((E) new Integer(-12));
+            }
+            actual = actual.getSiguiente();
+        }
+
+        aux.append(actual.getElemento());
+        if((int)actual.getElemento()%2 == 0)
+        {
+            aux.append((E) new Integer(-12));
+            this.head = aux.head;
+            this.ultimo = aux.ultimo; // no se utiliza ultimo para poner los centinelas
         }
     }
 }

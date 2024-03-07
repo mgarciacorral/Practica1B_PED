@@ -21,7 +21,8 @@ public class Menu
             System.out.println("2. Añadir elementos a la lista");
             System.out.println("3. Borrar el minimo");
             System.out.println("4. Mover cabeza de la lista a la cola");
-            System.out.println("5. Insertar nodos centinela\n");
+            System.out.println("5. Insertar nodos centinela (con referencia al ultimo)");
+            System.out.println("6. Insertar nodos centinela (sin referencia al ultimo)");
             System.out.println("0. Salir");
             System.out.print("\nIntroduce una opcion: ");
             opcion = sc.nextInt();
@@ -40,7 +41,10 @@ public class Menu
                     moverCabeza();
                     break;
                 case 5:
-                    insertarCentinelas();
+                    insertarCentinelasConUltimo();
+                    break;
+                case 6:
+                    insertarCentinelasSinUltimo();
                     break;
                 case 0:
                     System.out.println("Saliendo...");
@@ -75,8 +79,15 @@ public class Menu
         int elemento = sc.nextInt();
         while (elemento != -1)
         {
-            lista.append(elemento);
-            elemento = sc.nextInt();
+            try
+            {
+                lista.append(elemento);
+                elemento = sc.nextInt();
+            }catch(Exception e)
+            {
+                System.out.println("Solo numeros enteros son validos.");
+                return;
+            }
         }
 
         System.out.println("Actualmente la lista es: ");
@@ -108,13 +119,26 @@ public class Menu
         pulseIntro();
     }
 
-    private void insertarCentinelas()
+    private void insertarCentinelasConUltimo()
     {
         System.out.println("\t\tINSERTAR CENTINELAS\n");
         System.out.println("Centinelas insertados");
         System.out.print("Originalmente la lista era: ");
         lista.toStringRecursivo();
-        lista.insertarCentinelas();
+        lista.insertarCentinelasConUltimo();
+        System.out.print("Actualmente la lista es: ");
+        lista.toStringRecursivo();
+        System.out.println();
+        pulseIntro();
+    }
+
+    private void insertarCentinelasSinUltimo()
+    {
+        System.out.println("\t\tINSERTAR CENTINELAS\n");
+        System.out.println("Centinelas insertados");
+        System.out.print("Originalmente la lista era: ");
+        lista.toStringRecursivo();
+        lista.insertarCentinelasSinUltimo();
         System.out.print("Actualmente la lista es: ");
         lista.toStringRecursivo();
         System.out.println();
