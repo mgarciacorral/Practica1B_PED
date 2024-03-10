@@ -57,4 +57,34 @@ public class NodoLEG<E>
 
         return res;
     }
+
+    public NodoLEG<E> insertarCentinelas()
+    {
+        if(this.siguiente == null)
+        {
+            if((int)this.elemento%2 == 0 && (int)this.elemento != -12)
+            {
+                this.siguiente = new NodoLEG<E>((E) new Integer(-12));
+                return this.siguiente;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        else
+        {
+            NodoLEG<E> aux = this.siguiente.insertarCentinelas();
+            if(aux != null)
+            {
+                if((int)this.elemento%2 == 0 && (int)this.elemento != -12 && (int)this.siguiente.getElemento() != -12)
+                {
+                    NodoLEG<E> nuevo = new NodoLEG<E>((E) new Integer(-12));
+                    nuevo.setSiguiente(this.siguiente);
+                    this.setSiguiente(nuevo);
+                }
+            }
+            return aux;
+        }
+    }
 }

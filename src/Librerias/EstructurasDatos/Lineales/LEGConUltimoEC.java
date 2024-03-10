@@ -71,7 +71,7 @@ public class LEGConUltimoEC<E extends Number> extends LEGConUltimo<E> implements
 
             while(actual.getSiguiente() != null)
             {
-                if((int)actual.getElemento()%2 == 0)
+                if((int)actual.getElemento()%2 == 0 && (int)actual.getElemento() != -12 && (int)actual.getSiguiente().getElemento() != -12)
                 {
                     NodoLEG<E> aux = actual.getSiguiente();
                     actual.setSiguiente(new NodoLEG<E>((E) new Integer(-12)));
@@ -84,7 +84,7 @@ public class LEGConUltimoEC<E extends Number> extends LEGConUltimo<E> implements
                 }
 
             }
-            if((int)actual.getElemento()%2 == 0)
+            if((int)actual.getElemento()%2 == 0 && (int)actual.getElemento() != -12)
             {
                 append((E) new Integer(-12));
             }
@@ -99,25 +99,11 @@ public class LEGConUltimoEC<E extends Number> extends LEGConUltimo<E> implements
             return;
         }
 
-        LEGConUltimoEC<E> aux = new LEGConUltimoEC<E>();
-        NodoLEG<E> actual = this.head.getSiguiente();
-
-        while(actual.getSiguiente() != null)
+        NodoLEG<E> aux = head.getSiguiente().insertarCentinelas();
+        if(aux != null)
         {
-            aux.append(actual.getElemento());
-            if((int)actual.getElemento()%2 == 0)
-            {
-                aux.append((E) new Integer(-12));
-            }
-            actual = actual.getSiguiente();
+            this.ultimo = aux;
         }
 
-        aux.append(actual.getElemento());
-        if((int)actual.getElemento()%2 == 0)
-        {
-            aux.append((E) new Integer(-12));
-            this.head = aux.head;
-            this.ultimo = aux.ultimo; // no se utiliza ultimo para poner los centinelas
-        }
     }
 }
